@@ -1,0 +1,111 @@
+{
+  "resourceMetrics": [
+    {
+      "resource": {
+        "attributes": [
+          { "key": "service.name", "value": { "stringValue": "checkout-api" } },
+          { "key": "deployment.environment", "value": { "stringValue": "prod" } }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "scope": { "name": "checkout.instrumentation" },
+          "metrics": [
+            {
+              "name": "http.server.duration",
+              "histogram": {
+                "dataPoints": [
+                  {
+                    "attributes": [
+                      { "key": "http.route", "value": { "stringValue": "/checkout/{cart_id}" } },
+                      { "key": "http.status_code", "value": { "intValue": "200" } },
+                      { "key": "user.id", "value": { "stringValue": "user-001" } },
+                      { "key": "session.id", "value": { "stringValue": "sess-001" } }
+                    ],
+                    "count": 1,
+                    "sum": 118
+                  },
+                  {
+                    "attributes": [
+                      { "key": "http.route", "value": { "stringValue": "/checkout/{cart_id}" } },
+                      { "key": "http.status_code", "value": { "intValue": "200" } },
+                      { "key": "user.id", "value": { "stringValue": "user-002" } },
+                      { "key": "session.id", "value": { "stringValue": "sess-002" } }
+                    ],
+                    "count": 1,
+                    "sum": 141
+                  },
+                  {
+                    "attributes": [
+                      { "key": "http.route", "value": { "stringValue": "/checkout/{cart_id}" } },
+                      { "key": "http.status_code", "value": { "intValue": "500" } },
+                      { "key": "user.id", "value": { "stringValue": "user-003" } },
+                      { "key": "session.id", "value": { "stringValue": "sess-003" } }
+                    ],
+                    "count": 1,
+                    "sum": 883
+                  },
+                  {
+                    "attributes": [
+                      { "key": "http.route", "value": { "stringValue": "/checkout/{cart_id}" } },
+                      { "key": "http.status_code", "value": { "intValue": "200" } },
+                      { "key": "user.id", "value": { "stringValue": "user-004" } },
+                      { "key": "session.id", "value": { "stringValue": "sess-004" } }
+                    ],
+                    "count": 1,
+                    "sum": 122
+                  },
+                  {
+                    "attributes": [
+                      { "key": "http.route", "value": { "stringValue": "/checkout/{cart_id}" } },
+                      { "key": "http.status_code", "value": { "intValue": "200" } },
+                      { "key": "user.id", "value": { "stringValue": "user-005" } },
+                      { "key": "session.id", "value": { "stringValue": "sess-005" } }
+                    ],
+                    "count": 1,
+                    "sum": 131
+                  },
+                  {
+                    "attributes": [
+                      { "key": "http.route", "value": { "stringValue": "/checkout/{cart_id}" } },
+                      { "key": "http.status_code", "value": { "intValue": "200" } },
+                      { "key": "user.id", "value": { "stringValue": "user-006" } },
+                      { "key": "session.id", "value": { "stringValue": "sess-006" } }
+                    ],
+                    "count": 1,
+                    "sum": 127
+                  }
+                ]
+              }
+            },
+            {
+              "name": "db.client.operation.duration",
+              "histogram": {
+                "dataPoints": [
+                  {
+                    "attributes": [
+                      { "key": "db.system", "value": { "stringValue": "postgresql" } },
+                      { "key": "db.operation.name", "value": { "stringValue": "SELECT" } },
+                      { "key": "db.collection.name", "value": { "stringValue": "carts" } }
+                    ],
+                    "count": 4,
+                    "sum": 44
+                  },
+                  {
+                    "attributes": [
+                      { "key": "db.system", "value": { "stringValue": "postgresql" } },
+                      { "key": "db.operation.name", "value": { "stringValue": "UPDATE" } },
+                      { "key": "db.collection.name", "value": { "stringValue": "orders" } }
+                    ],
+                    "count": 2,
+                    "sum": 31
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

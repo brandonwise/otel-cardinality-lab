@@ -1,0 +1,42 @@
+{
+  "global": {
+    "max_series_per_metric": 2000,
+    "warn_series_per_metric": 1000,
+    "max_values_per_attribute": 100,
+    "warn_values_per_attribute": 50,
+    "dangerous_attributes": [
+      "user.id",
+      "session.id",
+      "request.id",
+      "trace_id",
+      "span_id",
+      "container.id",
+      "k8s.pod.uid",
+      "*.uuid"
+    ]
+  },
+  "metrics": {
+    "http.server.duration": {
+      "max_series": 5,
+      "warn_series": 4,
+      "deny_attributes": ["user.id", "session.id"],
+      "allow_attributes": [
+        "service.name",
+        "deployment.environment",
+        "http.route",
+        "http.status_code"
+      ]
+    },
+    "db.client.operation.duration": {
+      "max_series": 20,
+      "warn_series": 10,
+      "allow_attributes": [
+        "service.name",
+        "deployment.environment",
+        "db.system",
+        "db.operation.name",
+        "db.collection.name"
+      ]
+    }
+  }
+}

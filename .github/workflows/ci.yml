@@ -1,0 +1,35 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install
+        run: python -m pip install -e .
+      - name: Lint
+        run: python scripts/lint.py
+      - name: Type surface
+        run: python scripts/typecheck.py
+      - name: Compile
+        run: python -m compileall -q src tests scripts
+      - name: Tests
+        run: python -m unittest discover -s tests -v
+      - name: CLI smoke
+        run: |
+          otel-cardinality-lab analyze examples/otlp-metrics.json \
+            --budget examples/budget.json \
+            --output /tmp/otel-cardinality-report.json \
+            --markdown /tmp/otel-cardinality-report.md
+          test -s /tmp/otel-cardinality-report.json
+          test -s /tmp/otel-cardinality-report.md
